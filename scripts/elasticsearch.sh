@@ -1,4 +1,6 @@
 #!/bin/bash
+
+set -x
 DOCKER_ES_IMAGE=itzg/elasticsearch:2.4.0
 
 echo "elasticsearch.sh"
@@ -9,7 +11,7 @@ if [ $? -eq 0 ];then
   docker start es
 else
   echo "Downloading and starting es"
-  #docker pull ${DOCKER_ES_IMAGE}
+  docker pull ${DOCKER_ES_IMAGE}
   docker run -d --name es -p 9200:9200 -e ${DOCKER_ES_IMAGE}
 fi
 
