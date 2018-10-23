@@ -1,0 +1,13 @@
+language: node_js
+dist: trusty
+node_js: 6.1.0
+sudo: required
+services:
+  - docker
+env:
+  global:
+    - NODE_ENV=test
+before_script:
+  - ". ./scripts/setup_test_env.sh"
+script:
+  - ". ./scripts/run-tests.sh"
