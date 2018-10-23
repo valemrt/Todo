@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export SLEEP=5
+export SLEEP=10
 # remove previous running container
 echo "stopping all es containers..."
 docker stop es

@@ -20,7 +20,7 @@ echo "waiting ${SLEEP} seconds to let elasticsearch boot properly"
 sleep ${SLEEP}
 
 echo "testing eleasticsearch"
-curl localhost:9200/_cluster/health?pretty
+#curl localhost:9200/_cluster/health?pretty
 
 echo "elasticsearch ready, creating todo index"
-curl -X PUT "localhost:9200/todo"
+#curl -X PUT "localhost:9200/todo"
