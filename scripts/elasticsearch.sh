@@ -13,7 +13,7 @@ else
   echo "Downloading and starting es"
   docker pull ${DOCKER_ES_IMAGE}
   #docker run -d --name es -p 9200:9200 -e ${DOCKER_ES_IMAGE}
-  docker run -p 9200:9200 -e "discovery.type=single-node" ${DOCKER_ES_IMAGE}
+  docker run -d --name es -p 9200:9200 -e "discovery.type=single-node" ${DOCKER_ES_IMAGE}
 fi
 
 echo "waiting ${SLEEP} seconds to let elasticsearch boot properly"
