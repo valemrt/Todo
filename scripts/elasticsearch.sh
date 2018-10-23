@@ -1,8 +1,8 @@
 #!/bin/bash
 
 set -x
-DOCKER_ES_IMAGE=itzg/elasticsearch:2.4.0
-
+#DOCKER_ES_IMAGE=itzg/elasticsearch:2.4.0
+DOCKER_ES_IMAGE=docker.elastic.co/elasticsearch/elasticsearch:6.4.2
 echo "elasticsearch.sh"
 
 docker ps -a | grep es
@@ -12,7 +12,8 @@ if [ $? -eq 0 ];then
 else
   echo "Downloading and starting es"
   docker pull ${DOCKER_ES_IMAGE}
-  docker run -d --name es -p 9200:9200 -e ${DOCKER_ES_IMAGE}
+  #docker run -d --name es -p 9200:9200 -e ${DOCKER_ES_IMAGE}
+  docker run -p 9200:9200 -e "discovery.type=single-node" ${DOCKER_ES_IMAGE}
 fi
 
 echo "waiting ${SLEEP} seconds to let elasticsearch boot properly"
