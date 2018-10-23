@@ -31,7 +31,7 @@ module.exports.getTodo = function(id) {
             .run()
             .then(function(hit){
                 // return hit object or false if not found
-                if (hit == false) {
+                if (hit === false) {
                     reject ('not found');
                 } else {
                     resolve(JSON.stringify(hit.data()));
@@ -49,9 +49,9 @@ module.exports.deleteTodo = function (id) {
             .delete()
             .then(function(hit){
                 console.log('deleted!');
-                resolve('success');
+                resolve({'status':'success'});
             })
-            .catch((err) => reject(err))
+            .catch((err) => {reject(err)})
     })
 };
 

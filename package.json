@@ -5,7 +5,8 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "start-dev": "nodemon index.js"
+    "start-dev": "nodemon index.js",
+    "test": "mocha test/test.js --timeout 60000"
   },
   "dependencies": {
     "elasticsearch-helper": "^1.7.0",

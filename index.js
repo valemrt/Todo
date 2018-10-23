@@ -13,6 +13,11 @@ const serverPort = process.env.PORT || 3000;
 
 app.set('port', serverPort);
 
+const srv = http.createServer(app);
+
+module.exports.app = app; // for testing
+module.exports.srv = srv;
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -39,6 +44,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     // Serve the Swagger documents and Swagger UI
     app.use(middleware.swaggerUi());
 
+
     app.use(function(err, req, res, next) {
         if(err.statusCode){
             res.status(err.statusCode).send(err);
@@ -48,8 +54,10 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
     });
 
     // Start the server
-    http.createServer(app).listen(serverPort, function () {
+    srv.listen(serverPort, function () {
         console.log('Your server is listening on port %d (http://localhost:%d)', serverPort, serverPort);
     });
+
 });
+
 
