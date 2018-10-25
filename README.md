@@ -26,13 +26,14 @@ Todos are stored into ElasticSearch and user can add, get, delete and update the
 * `npm install mocha -g`
 * `npm test`
 
-###Some notes
+### Some notes
 I'm totally aware that this app is buggy and not completed and it's far away from a production-like one.
 I've written it in a very short time (one after-work evening), so there are still things missing but that I have pretty clear in my mind, such as:
 
 * Authentication:  At the moment (October 24) there's no auth implementation, 
 I've put something into the Swagger assuming there is an endpoint where user authenticates and gets a Token to consume APIs.
 From the Token can be retrieved a unique `account_id` for each user and that can be used to retrieve to each user its TODOS.
+I've made a [small diagram] explaining this. (https://github.com/valemrt/Todo/blob/master/Auth.jpg)
 
 * Filtering: I've used `elasticsearch-helper` node module as it looked a quick solution, a next step would have a filtered search API where users could search based for instance on the TODO status (completed or not).
 
