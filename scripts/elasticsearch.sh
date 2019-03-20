@@ -12,7 +12,7 @@ if [ $? -eq 0 ];then
 else
   echo "Downloading and starting es"
   docker pull ${DOCKER_ES_IMAGE}
-  docker run --name es -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 -e "discovery.type=single-node" ${DOCKER_ES_IMAGE}
+  docker run -d --name es -p 127.0.0.1:9200:9200 -e "discovery.type=single-node" ${DOCKER_ES_IMAGE}
   #docker run -d --name es -p 9200:9200 -e "discovery.type=single-node" ${DOCKER_ES_IMAGE}
 fi
 
